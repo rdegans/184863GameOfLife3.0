@@ -1,8 +1,8 @@
-/*
+﻿/*
 * Name: Riley de Gans
 * Date: May 27th, 2019
 * Description: A game that simulates life with a grid
-*/﻿
+*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +41,7 @@ namespace _184863GameOfLife3._0
         {
             InitializeComponent();
             gameTimer.Tick += GameTimer_Tick;
-            gameTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            gameTimer.Interval = new TimeSpan(0, 0, 0, 0, 10);
             btnPlay = new Button();
             btnPlay.BorderBrush = Brushes.Black;
             btnPlay.Content = "Click me to play";
@@ -206,10 +206,19 @@ namespace _184863GameOfLife3._0
                     {
                         if (grid[x][y] == button)
                         {
-                            gridLive[x][y] = true;
-                            grid[x][y].Background = Brushes.Black;
-                            grid[x][y].BorderBrush = Brushes.White;
-                            counter++;
+                            if (gridLive[x][y] == false)
+                            {
+                                gridLive[x][y] = true;
+                                grid[x][y].Background = Brushes.Black;
+                                grid[x][y].BorderBrush = Brushes.White;
+                            }
+                            else if (gridLive[x][y])
+                            {
+                                gridLive[x][y] = false;
+                                grid[x][y].Background = Brushes.White;
+                                grid[x][y].BorderBrush = Brushes.Black;
+                            }
+
                         }
                     }
                 }
